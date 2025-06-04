@@ -1,0 +1,80 @@
+@page "/"
+@using TodoApp.Models
+@using System.Net.Http.Json
+@inject HttpClient Http
+
+<h1>To Do List</h1>
+
+<div class="row mb-4">
+    <div class="col">
+        <div class="form-group">
+            <label for="newTodo">What needs to be done?</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="newTodo" @bind="newTodoText" placeholder="Enter new task" />
+                <button class="btn btn-primary" @onclick="AddTodo">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2>Tasks</h2>
+
+@if (todos == null)
+{
+    <p>Loading...</p>
+}
+else if (!todos.Any())
+{
+    <p>No tasks</p>
+}
+else
+{
+    <div class="list-group">
+        @foreach (var todo in todos)
+        {
+            <div class="list-group-item d-flex justify-content-between align-items-center">
+                <span>@todo.Text</span>
+                <button class="btn btn-danger btn-sm" @onclick="() => RemoveTodo(todo.Id)">Remove</button>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private List<Todo>? todos;
+    private string newTodoText = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadTodos();
+    }
+
+    private async Task LoadTodos()
+    {
+        todos = await Http.GetFromJsonAsync<List<Todo>>("http://localhost:8001/todos/");
+    }
+
+    private async Task AddTodo()
+    {
+        if (string.IsNullOrWhiteSpace(newTodoText))
+            return;
+
+        var response = await Http.PostAsJsonAsync("http://localhost:8001/todos/", new { text = newTodoText });
+        
+        if (response.IsSuccessStatusCode)
+        {
+            newTodoText = string.Empty;
+            await LoadTodos();
+        }
+    }
+
+    private async Task RemoveTodo(int id)
+    {
+        var response = await Http.DeleteAsync($"http://localhost:8001/todos/{id}");
+        
+        if (response.IsSuccessStatusCode)
+        {
+            await LoadTodos();
+        }
+    }
+} 
