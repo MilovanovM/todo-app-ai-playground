@@ -1,0 +1,4 @@
+node_modules/
+todo.db
+.DS_Store
+npm-debug.log* 
