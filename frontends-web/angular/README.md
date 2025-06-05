@@ -24,7 +24,7 @@ npm install
 
 3. Start the Angular development server:
 ```bash
-ng serve --port 8000
+npm start
 ```
 
 4. Open your browser and navigate to `http://localhost:8000/`
