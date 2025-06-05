@@ -2,7 +2,10 @@
 
 This repo contains implementations of a simple to-do list app in different languages and frameworks.
 
-The apps were created via Cursor and use the same UI (based on Bootstrap).
+The apps were created via the agentic mode in Cursor/VSCode+Copilot and use the same UI (based on Bootstrap).
+
+All backends are on port 8001, all frontends are on port 8000. You can easily combine any frontend app with any backend
+API (except Laravel, see below).
 
 **Backends**
 
