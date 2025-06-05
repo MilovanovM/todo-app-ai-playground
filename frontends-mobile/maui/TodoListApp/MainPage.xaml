@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoListApp.MainPage">
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="25">
+            <Label Text="To Do List" FontSize="32" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <!-- Add Task Form -->
+            <Label Text="What needs to be done?" FontSize="18" />
+            <HorizontalStackLayout Spacing="10">
+                <Entry x:Name="TaskEntry" Placeholder="Enter new task..." HorizontalOptions="FillAndExpand" />
+                <Button Text="Add" x:Name="AddButton" Clicked="OnAddClicked" />
+            </HorizontalStackLayout>
+
+            <!-- Tasks List -->
+            <Label Text="Tasks" FontSize="24" FontAttributes="Bold" />
+            <CollectionView x:Name="TasksCollection" ItemsSource="{Binding Tasks}" IsVisible="{Binding HasTasks}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout Spacing="10" Padding="5">
+                            <Label Text="{Binding Text}" FontSize="18" VerticalOptions="Center" />
+                            <Button Text="Remove" Clicked="OnRemoveClicked" CommandParameter="{Binding Id}" />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label x:Name="NoTasksLabel" Text="No tasks" FontSize="18" IsVisible="{Binding NoTasks}" HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

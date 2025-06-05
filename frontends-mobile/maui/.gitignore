@@ -1,0 +1,62 @@
+# .NET MAUI typical .gitignore
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.csproj.user
+*.pidb
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Visual Studio for Mac
+.vscode/
+.idea/
+*.sln.docstates
+
+# Rider
+.idea/
+*.sln.iml
+
+# VS Code
+.vscode/
+
+# MAUI specific
+**/Platforms/Android/obj/
+**/Platforms/Android/bin/
+**/Platforms/iOS/obj/
+**/Platforms/iOS/bin/
+**/Platforms/MacCatalyst/obj/
+**/Platforms/MacCatalyst/bin/
+**/Platforms/Tizen/obj/
+**/Platforms/Tizen/bin/
+**/Platforms/Windows/obj/
+**/Platforms/Windows/bin/
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Others
+*.log
+*.vs/
+*.vsconfig
+
+# Local configuration
+Properties/launchSettings.json
