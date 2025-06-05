@@ -2,25 +2,15 @@ FROM golang:1.21-bullseye
 
 WORKDIR /app
 
-# Add a non-root user
-RUN useradd -m appuser
-
-COPY go.mod ./
+COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
 
-# Enable CGO and build
 ENV CGO_ENABLED=1
+RUN apt-get update && apt-get install -y gcc
 RUN go build -o main .
 
-# Create data directory and set permissions
-RUN mkdir -p /app/data && \
-    chown -R appuser:appuser /app
-
-# Switch to non-root user
-USER appuser
-
-EXPOSE 8002
+EXPOSE 8001
 
 CMD ["./main"] 

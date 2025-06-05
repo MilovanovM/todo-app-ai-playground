@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  todoapi:
+    build:
+      context: ./TodoApi
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    volumes:
+      - todo_db:/app/data
+    environment:
+      - DOTNET_RUNNING_IN_CONTAINER=true
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/todo.db
+
+volumes:
+  todo_db: 

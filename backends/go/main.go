@@ -80,5 +80,5 @@ func main() {
 	})
 
 	// Run the server
-	r.Run(":8002")
+	r.Run(":8001")
 }

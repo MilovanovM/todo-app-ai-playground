@@ -1,26 +1,32 @@
-# Todo List API
+# FastAPI Todo Application
 
-A simple REST API for managing todo items built with FastAPI and SQLite.
+A simple Todo application built with FastAPI and SQLite.
 
 ## Features
 
-- Get list of todo items
-- Add new todo items
-- Delete todo items
+- Create, read, and delete todo items
+- RESTful API endpoints
+- SQLite database with SQLAlchemy ORM
+- Docker support
 
-## Running with Docker
+## Prerequisites
 
-1. Build the Docker image:
+- Docker and Docker Compose installed on your system
+
+## Getting Started
+
+1. Clone the repository:
 ```bash
-docker build -t todo-api .
+git clone <repository-url>
+cd <repository-name>
 ```
 
-2. Run the container:
+2. Start the application using Docker Compose:
 ```bash
-docker run -p 8001:8001 todo-api
+docker compose up --build
 ```
 
-The API will be available at http://localhost:8001
+The application will be available at `http://localhost:8001`
 
 ## API Endpoints
 
@@ -31,5 +37,13 @@ The API will be available at http://localhost:8001
 ## API Documentation
 
 Once the application is running, you can access:
-- Swagger UI documentation at http://localhost:8001/docs
-- ReDoc documentation at http://localhost:8001/redoc 
+- Swagger UI documentation at `http://localhost:8001/docs`
+- ReDoc documentation at `http://localhost:8001/redoc`
+
+## Development
+
+The application uses:
+- FastAPI for the web framework
+- SQLAlchemy for database ORM
+- SQLite as the database
+- Docker for containerization 

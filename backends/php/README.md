@@ -2,38 +2,32 @@
 
 ## Prerequisites
 - Docker installed on your machine
+- Docker Compose installed on your machine
 
 ## Quick Start
 
-1. **Build the Docker image:**
+1. **Start the application:**
    ```sh
-   docker build -t laravel-app .
+   docker compose up --build
    ```
 
-2. **Generate the application key (if not already set):**
-   ```sh
-   docker run --rm -v $(pwd):/var/www laravel-app php artisan key:generate
-   ```
+2. **Visit the app:**
+   Open your browser and go to [http://localhost:8001](http://localhost:8001)
 
-3. **Ensure the SQLite database file exists:**
-   ```sh
-   touch database/database.sqlite
-   ```
+## Additional Commands
 
-4. **Run database migrations (optional, for a fresh setup):**
-   ```sh
-   docker run --rm -v $(pwd):/var/www laravel-app php artisan migrate
-   ```
+- **Stop the application:**
+  ```sh
+  docker compose down
+  ```
 
-5. **Start the application on port 8004:**
-   ```sh
-   docker run --rm -it -p 8004:8004 -v $(pwd):/var/www laravel-app php artisan serve --host=0.0.0.0 --port=8004
-   ```
-
-6. **Visit the app:**
-   Open your browser and go to [http://localhost:8004](http://localhost:8004)
+- **View logs:**
+  ```sh
+  docker compose logs -f
+  ```
 
 ## Notes
-- The `.env` file is configured for SQLite with the path `/var/www/database/database.sqlite`.
+- The application uses SQLite as the database, configured in the `.env` file.
+- The database file is located at `database/database.sqlite`.
 - For production, use a web server (like Nginx) in front of PHP-FPM.
-- For other database drivers, update your `.env` accordingly.
+- For other database drivers, update your `.env` and `docker-compose.yml` accordingly.

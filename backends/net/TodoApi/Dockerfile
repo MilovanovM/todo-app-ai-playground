@@ -11,6 +11,6 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-EXPOSE 8003
-ENV ASPNETCORE_URLS=http://+:8003
+EXPOSE 8001
+ENV ASPNETCORE_URLS=http://+:8001
 ENTRYPOINT ["dotnet", "TodoApi.dll"] 

@@ -20,10 +20,19 @@ docker build -t todo-app .
 
 2. Run the container:
 ```bash
-docker run -p 8006:8006 todo-app
+docker run -p 8001:8001 todo-app
 ```
 
-The API will be available at `http://localhost:8006`
+The API will be available at `http://localhost:8001`
+
+### Using Docker Compose
+
+1. Build and run the containers:
+```bash
+docker compose up --build
+```
+
+2. The API will be available at `http://localhost:8001`
 
 ### Running Locally
 
@@ -37,4 +46,4 @@ npm install
 npm start
 ```
 
-The API will be available at `http://localhost:8006` 
+The API will be available at `http://localhost:8001` 
